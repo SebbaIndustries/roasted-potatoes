@@ -15,7 +15,9 @@ uploadFolder="/i/"
 
 # screenshot and save the file
 gnome-screenshot -a --file=$fileName
-# upload to the server
-scp $fileName $server
 #copy uploaded file link
 echo -n "${domain}${uploadFolder}${fileName}" | xclip -selection clipboard
+# upload to the server
+scp $fileName $server
+# create a popup telling user that screen is ready
+notify-send "Uploaded screenshot to the server"
