@@ -1,10 +1,20 @@
 #!/bin/bash
 
 # Made by SebbaIndustries
+# This script builds and copies plugin jar to the plugins folder.
+# Place it in main server directory!
 
 # Project credentials
 DEVELOPER="sebbaindustries"
 PLUGIN="DynamicShop"
+
+if [ -d "plugins" ]; then
+  # shellcheck disable=SC2164
+  cd plugins
+else
+  echo "Directory plugins not found, terminating!"
+  exit
+fi
 
 # Remove old plugin .jar
 if [ -f "${PLUGIN}.jar" ]; then
@@ -37,7 +47,7 @@ cd target || exit
 rm *-sources.jar
 rm original-*.jar
 
-# Copy the plugin back to the base dir [!] Change this if script is not located in plugins directory
+# Copy the plugin back to the plugin directory
 cp *.jar ../../../${PLUGIN}.jar
 
 # Move back to the base dir adn cleanup temporary build directory
