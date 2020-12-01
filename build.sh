@@ -36,9 +36,12 @@ mkdir $TEMP_DIR
 cd $TEMP_DIR || exit
 
 # Clone the project
-git clone https://github.com/${DEVELOPER}/${PLUGIN}/tree/${BRANCH}.git
+git clone https://github.com/${DEVELOPER}/${PLUGIN}.git
 # Move to the project main directory
 cd $PLUGIN || exit
+
+# Comment this out if you are working on a master branch
+git switch $BRANCH
 
 # Build the project, you can add additional flags here if you want
 mvn
