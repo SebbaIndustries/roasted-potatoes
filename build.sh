@@ -23,6 +23,23 @@ if [ -f "${PLUGIN}.jar" ]; then
   rm ${PLUGIN}.jar
 fi
 
+# Remove old plugin directory if -c flag is present
+
+clean_flag='false'
+
+while getopts 'c' flag; do
+  # shellcheck disable=SC2220
+  case "${flag}" in
+    c) clean_flag='true' ;;
+  esac
+done
+
+if [ "$clean_flag" = "true" ]; then
+    echo "Cleaning ${PLUGIN} directory!"
+    # shellcheck disable=SC2115
+    rm -rf ${PLUGIN}/
+fi
+
 # Script creates temporary build directory
 TEMP_DIR="temp-${PLUGIN}-build-dir"
 
