@@ -7,6 +7,7 @@
 # Project credentials
 DEVELOPER="sebbaindustries"
 PLUGIN="DynamicShop"
+BRANCH="dev"
 
 if [ -d "plugins" ]; then
   # shellcheck disable=SC2164
@@ -35,7 +36,7 @@ mkdir $TEMP_DIR
 cd $TEMP_DIR || exit
 
 # Clone the project
-git clone https://github.com/${DEVELOPER}/${PLUGIN}.git
+git clone https://github.com/${DEVELOPER}/${PLUGIN}/tree/${BRANCH}.git
 # Move to the project main directory
 cd $PLUGIN || exit
 
