@@ -58,7 +58,9 @@ git clone https://github.com/${DEVELOPER}/${PLUGIN}.git
 cd $PLUGIN || exit
 
 # Comment this out if you are working on a master branch
+# Well on some system git doesen't have switch command so replece it with checkout if needed.
 git switch $BRANCH
+#git checkout $BRANCH
 
 # Build the project, you can add additional flags here if you want
 mvn
