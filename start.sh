@@ -57,7 +57,8 @@ function updater() {
 function start() {
     echo "Starting!"
     # shellcheck disable=SC1001
-    java -Xms$STARTRAM\M -Xmx$MAXRAM\M "$PARMS" -jar $JARNAME --nogui
+    # shellcheck disable=SC2086
+    java -Xms$STARTRAM\M -Xmx$MAXRAM\M $PARMS -jar $JARNAME --nogui
 }
 
 generate_missing_sources
