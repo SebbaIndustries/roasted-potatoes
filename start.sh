@@ -22,9 +22,7 @@ PARMS="
 "
 
 ZGCP="
--XX:ZUncommitDelay=5
--XX:SoftMaxHeapSize=4G
--XX:ZAllocationSpikeTolerance=2.0
+-XX:SoftMaxHeapSize=1G
 "
 
 PARMS="$PARMS -XX:+DisableExplicitGC -XX:-UseParallelGC -XX:-UseG1GC -XX:+UseZGC $ZGCP"
