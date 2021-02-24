@@ -6,7 +6,7 @@ JARNAME=paper.jar
 BUILD_VERSION_HOLDER=version_info.json
 
 PROJECT="paper"
-VERSION="1.16.4"
+VERSION="1.16.5"
 
 PARMS="
 -server
@@ -54,6 +54,13 @@ function updater() {
   fi
 }
 
+function spec_build() {
+  echo "Loading older version ($1)!"
+  build_num=$1
+  jarlink="https://papermc.io/api/v2/projects/${PROJECT}/versions/${VERSION}/builds/${build_num}/downloads/${PROJECT}-${VERSION}-${build_num}.jar"
+  curl -s "$jarlink" > "$JARNAME"
+}
+
 function start() {
     echo "Starting!"
     # shellcheck disable=SC1001
@@ -62,5 +69,11 @@ function start() {
 }
 
 generate_missing_sources
-updater
+
+if [ "$1" ]; then
+  spec_build "$1"
+else
+  updater
+fi
+
 start
